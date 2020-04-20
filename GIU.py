@@ -14,26 +14,23 @@ canvas = tk.Canvas( root, height = height, width = width )
 canvas.pack()
 
 # create a frame
-frame = tk.Frame(root, bg = '#80c1ff' )
-frame.place( relwidth = 0.8, relheight = 0.8, relx = 0.1, rely = 0.1 )
-
-# create simple button 
-button = tk.Button( frame, text = "test button bitch", bg = 'gray' )
-# button.pack( side = 'left', fill = 'both', expand = True )
-# button.grid( row = 0, column = 0 )
-button.place( relx = 0, rely = 0, relwidth = 0.25, relheight = 0.25 )
-
-# create a label
-label = tk.Label( frame, text = "label, bitch", bg = "yellow" )
-# label.pack( side = 'left', fill = 'both' )
-# label.grid( row = 0, column = 1 )
-label.place( relx = 0.3, rely = 0, relwidth = 0.45, relheight = 0.25 )
+frame = tk.Frame(root, bg = '#FE9C9C', bd = 5 )
+frame.place( relwidth = 0.75, relheight = 0.1, relx = 0.5, rely = 0.1, anchor = 'n' )
 
 # create an entry bar 
-entry = tk.Entry( frame, bg = 'green' )
-# entry.pack( side = 'left', fill = 'both' )
-# entry.grid( row = 0, column = 2 )
-entry.place( relx = 0.8, rely = 0, relwidth = 0.2, relheight = 0.25 )
+entry = tk.Entry( frame, font = 40 )
+entry.place( relwidth = 0.65, relheight = 1 )
+
+# create simple button 
+button = tk.Button( frame, text = "test button bitch", font = 40 )
+button.place( relx = 0.7, rely = 0, relwidth = 0.3, relheight = 1 )
+
+lowerFrame = tk.Frame( root, bg = '#FE9C9C', bd = 10)
+lowerFrame.place( relx = 0.5, rely = 0.25, relwidth = 0.75, relheight = 0.6, anchor = 'n' )
+
+# create a label
+label = tk.Label( lowerFrame )
+label.place( relwidth = 1, relheight = 1 )
 
 # start GUI loop
 root.mainloop()
