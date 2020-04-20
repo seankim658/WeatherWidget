@@ -6,12 +6,19 @@ from PIL import Image, ImageTk
 height = 700
 width = 800
 
+def test_function( value ):
+    print( 'button clicked with value: ' + value )
+
 # create root window 
 root = tk.Tk()
 
 # create a canvas
 canvas = tk.Canvas( root, height = height, width = width )
 canvas.pack()
+
+background_image = ImageTk.PhotoImage( Image.open( 'background.jpg' ) )
+background_label = tk.Label( root, image = background_image )
+background_label.place( relwidth = 1, relheight = 1 )
 
 # create a frame
 frame = tk.Frame(root, bg = '#FE9C9C', bd = 5 )
@@ -22,7 +29,7 @@ entry = tk.Entry( frame, font = 40 )
 entry.place( relwidth = 0.65, relheight = 1 )
 
 # create simple button 
-button = tk.Button( frame, text = "test button bitch", font = 40 )
+button = tk.Button( frame, text = "Get Weather", font = 40, command = lambda: test_function( entry.get() )  )
 button.place( relx = 0.7, rely = 0, relwidth = 0.3, relheight = 1 )
 
 lowerFrame = tk.Frame( root, bg = '#FE9C9C', bd = 10)
