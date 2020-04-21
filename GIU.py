@@ -18,7 +18,14 @@ def get_weather( city ):
     endpoint = 'https://api.openweathermap.org/data/2.5/weather'
     params = {'APPID': apiKey, 'q': city, 'units': 'imperial'}
     response = requests.get( endpoint, params = params )
-    print( response.json() ) 
+    weather = response.json()
+    label['text'] = weatherFormat( weather )
+
+def weatherFormat( weather ):
+    name = weather['name']
+    mainWeather = 'Weather: ' + weather['weather'][0]['main']
+    temp = 'Temperature: ' + str( weather['main']['temp'] ) 
+    return str( name ) + ' ' + str( mainWeather ) + ' ' + str( temp )
 
 # create root window 
 root = tk.Tk()
