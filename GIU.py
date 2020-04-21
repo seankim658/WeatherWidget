@@ -2,12 +2,25 @@ import tkinter as tk
 import requests 
 from PIL import Image, ImageTk
 
+"""
+    First time using the Python tkinter module. Simple Weather app.
+"""
+
+apiKey = '8628589b3c4436084b467a9911675e0e'
+endpoint = 'api.openweathermap.org/data/2.5/forecast?q={city name},{state},{country code}&appid={your api key}'
+
 # dimensions
 height = 700
 width = 800
 
 def test_function( value ):
-    print( 'button clicked with value: ' + value )
+    get_weather( value )
+
+def get_weather( city ):
+    endpoint = 'https://api.openweathermap.org/data/2.5/forecast'
+    params = {'APPID': apiKey, 'q': city, 'units': 'imperial'}
+    response = requests.get( endpoint, params = params )
+    print( response.json() ) 
 
 # create root window 
 root = tk.Tk()
@@ -16,6 +29,7 @@ root = tk.Tk()
 canvas = tk.Canvas( root, height = height, width = width )
 canvas.pack()
 
+# set background image 
 background_image = ImageTk.PhotoImage( Image.open( 'background.jpg' ) )
 background_label = tk.Label( root, image = background_image )
 background_label.place( relwidth = 1, relheight = 1 )
