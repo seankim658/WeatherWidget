@@ -13,11 +13,9 @@ endpoint = 'api.openweathermap.org/data/2.5/forecast?q={city name},{state},{coun
 height = 700
 width = 800
 
-def test_function( value ):
-    get_weather( value )
 
 def get_weather( city ):
-    endpoint = 'https://api.openweathermap.org/data/2.5/forecast'
+    endpoint = 'https://api.openweathermap.org/data/2.5/weather'
     params = {'APPID': apiKey, 'q': city, 'units': 'imperial'}
     response = requests.get( endpoint, params = params )
     print( response.json() ) 
@@ -43,7 +41,7 @@ entry = tk.Entry( frame, font = 40 )
 entry.place( relwidth = 0.65, relheight = 1 )
 
 # create simple button 
-button = tk.Button( frame, text = "Get Weather", font = 40, command = lambda: test_function( entry.get() )  )
+button = tk.Button( frame, text = "Get Weather", font = 40, command = lambda: get_weather( entry.get() )  )
 button.place( relx = 0.7, rely = 0, relwidth = 0.3, relheight = 1 )
 
 lowerFrame = tk.Frame( root, bg = '#FE9C9C', bd = 10)
