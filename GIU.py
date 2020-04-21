@@ -22,10 +22,14 @@ def get_weather( city ):
     label['text'] = weatherFormat( weather )
 
 def weatherFormat( weather ):
-    name = weather['name']
-    mainWeather = 'Weather: ' + weather['weather'][0]['main']
-    temp = 'Temperature: ' + str( weather['main']['temp'] ) 
-    return str( name ) + ' ' + str( mainWeather ) + ' ' + str( temp )
+    try:
+        name = weather['name']
+        mainWeather = weather['weather'][0]['main']
+        temp = weather['main']['temp'] 
+        returnString = 'City: ' + str( name ) + '\n' + ' Weather: ' + str( mainWeather ) + '\n' + 'Temperature: ' + str( temp ) 
+    except:
+        returnString = 'There was a problem retrieving that information'
+    return returnString
 
 # create root window 
 root = tk.Tk()
