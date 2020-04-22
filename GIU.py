@@ -30,8 +30,9 @@ def weatherFormat( weather ):
         returnString = 'There was a problem retrieving that information'
     return returnString
 
-# create root window 
+# create root window and set title
 root = tk.Tk()
+root.title( 'Weather Widget' )
 
 # create a canvas
 canvas = tk.Canvas( root, height = height, width = width )
